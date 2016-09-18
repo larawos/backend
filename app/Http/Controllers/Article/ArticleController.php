@@ -27,12 +27,15 @@ class ArticleController extends Controller
 
     public function index()
     {
-        //
+        $articles = $this->articles->getPaginated(50);
+        return compact('articles');
     }
 
     public function show($id)
     {
-        //
+        $article = $this->articles->find($id);
+
+        return compact('article');        
     }
 
     public function create()
@@ -42,26 +45,44 @@ class ArticleController extends Controller
 
     public function edit($id)
     {
-        //
+        $article = $this->articles->find($id);
+
+        return compact('article');
     }
 
     public function store(StoreArticleRequest $request)
     {
-        //
+        if (!$this->articles->create($request->all())) {
+            return $this->articles->error();
+        }
+
+        return $this->articles->success();
     }
 
     public function update($id, UpdateArticleRequest $request)
     {
-        //
+        if (!$this->articles->update($id, $request->all())) {
+            return $this->articles->error();
+        }
+
+        return $this->articles->success();
     }
 
     public function destroy($id, DeleteArticleRequest $request)
     {
-        //
+        if (!$this->articles->destroy($id)) {
+            return $this->articles->error();
+        }
+
+        return $this->articles->success();
     }
 
     public function delete($id, PermanentlyDeleteArticleRequest $request)
     {
-        //
+        if (!$this->articles->delete($id)) {
+            return $this->articles->error();
+        }
+
+        return $this->articles->success();
     }
 }

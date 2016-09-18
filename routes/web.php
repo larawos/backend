@@ -15,10 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['namespace' => 'Article'], function () {
-    Route::resource('article', 'ArticleController');
+Route::group(['namespace' => 'Auth'], function() {
+    Route::get('login', 'LoginController@showLoginForm')->name('login');
+    Route::post('login', 'LoginController@login');
+    Route::post('logout', 'LoginController@logout');
 });
 
-Route::group(['namespace' => 'Course'], function () {
-    Route::resource('course', 'CourseController');
-});
+Route::get('dashboard', 'DashboardController@index');
