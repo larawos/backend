@@ -6,6 +6,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Resource from 'vue-resource'
 
+import container from './components/container.vue'
 import dashboard from './components/dashboard.vue'
 
 Vue.use(Router)
@@ -24,23 +25,27 @@ Vue.config.debug = true
 
 var App = Vue.extend({})
 
-var article = {
-    index: require('./components/articles/index.vue'),
-    show: require('./components/articles/show.vue'),
-    edit: require('./components/articles/edit.vue')
+var content = {
+    article: {
+        index: require('./components/articles/index.vue'),
+        show: require('./components/articles/show.vue'),
+        edit: require('./components/articles/edit.vue')
+    },
+    course: {
+        index: require('./components/articles/index.vue'),
+        show: require('./components/articles/show.vue'),
+        edit: require('./components/articles/edit.vue')
+    }
 }
 
-var course = {
-    index: require('./components/articles/index.vue'),
-    show: require('./components/articles/show.vue'),
-    edit: require('./components/articles/edit.vue')
+var page = {
+    notFound: require('./components/pages/404.vue')
 }
 
 // Routing logic
 var router = new Router({
   history: true,
   saveScrollPosition: true,
-  root: '/admin',
   linkActiveClass: 'active-link'
 })
 
@@ -50,30 +55,35 @@ router.map({
         name:'dashboard',
         component: dashboard
     },
-    '/article': {
-        name:'article.index',
-        component: article.index
-    },
-    '/article/:id': {
-        name:'article.show',
-        component: article.show
-    },
-    '/article/:id/edit': {
-        name:'article.edit',
-        component: article.edit
-    },
-    '/course': {
-        name:'course.index',
-        component: course.index
-    },
-    '/course/:id': {
-        name:'course.show',
-        component: course.show
-    },
-    '/course/:id/edit': {
-        name:'course.edit',
-        component: course.edit
-    },
+    '/content': {
+        component: container,
+        subRoutes: {
+            '/article': {
+                name:'content.article.index',
+                component: content.article.index
+            },
+            '/article/:id': {
+                name:'content.article.show',
+                component: content.article.show
+            },
+            '/article/:id/edit': {
+                name:'content.article.edit',
+                component: content.article.edit
+            },
+            '/course': {
+                name:'content.course.index',
+                component: content.course.index
+            },
+            '/course/:id': {
+                name:'content.course.show',
+                component: content.course.show
+            },
+            '/course/:id/edit': {
+                name:'content.course.edit',
+                component: content.course.edit
+            }
+        }
+    }
 })
 
 router.start(App, 'body')

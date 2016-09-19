@@ -50,7 +50,7 @@
                         </li>
             
                         <!--Menu list item-->
-                        <li>
+                        <li :class="{ 'active-sub': $route.path.indexOf('content') > 0 }">
                             <a href="#">
                                 <i class="fa fa-th"></i>
                                 <span class="menu-title">
@@ -61,8 +61,8 @@
             
                             <!--Submenu-->
                             <ul class="collapse">
-                                <li><a v-link="{ name: 'article.index' }">Article</a></li>
-                                <li><a v-link="{ name: 'course.index' }">Course</a></li>
+                                <li><a v-link="{ name: 'content.article.index' }">Article</a></li>
+                                <li><a v-link="{ name: 'content.course.index' }">Course</a></li>
                             </ul>
                         </li>
 
