@@ -21,4 +21,6 @@ Route::group(['namespace' => 'Auth'], function() {
     Route::post('logout', 'LoginController@logout');
 });
 
-Route::get('dashboard', 'DashboardController@index');
+Route::group(['prefix' => 'admin'], function() {
+    Route::get('{name?}', 'DashboardController@index');
+});

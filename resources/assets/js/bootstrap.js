@@ -19,6 +19,9 @@ require('bootstrap-sass');
 window.Vue = require('vue');
 require('vue-resource');
 
+window.Router = require('vue-router');
+Vue.use(Router)
+
 /**
  * We'll register a HTTP interceptor to attach the "CSRF" header to each of
  * the outgoing requests issued by this application. The CSRF middleware
@@ -27,6 +30,8 @@ require('vue-resource');
 
 Vue.http.interceptors.push((request, next) => {
     request.headers['X-CSRF-TOKEN'] = Laravel.csrfToken;
+    request.headers['Accept'] = Laravel.accept;
+    request.headers['Authorization'] = 'Bearer ' + Laravel.authorization;
 
     next();
 });
