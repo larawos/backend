@@ -54,37 +54,7 @@
 <!--You may remove all ID or Class names which contain "demo-", they are only used for demonstration. -->
 
 <body>
-    <div id="container" class="effect footer-fixed mainnav-lg mainnav-fixed navbar-fixed">
-
-        @include('includes.header')
-
-        <div class="boxed">
-
-            <!--CONTENT CONTAINER-->
-            <!--===================================================-->
-            <div id="content-container">
-                @yield('content')
-            </div>
-            <!--===================================================-->
-            <!--END CONTENT CONTAINER-->
-
-            @include('includes.menu')
-
-            @include('includes.aside')
-
-        </div>
-
-        @include('includes.footer')
-
-        @include('includes.top')
-
-    </div>
-    <!--===================================================-->
-    <!-- END OF CONTAINER -->
-
-    <!--JAVASCRIPT-->
-    <!--=================================================-->
-
+    @yield('content')
     <!--Master [ REQUIRED ]-->
     <script src="/assets/js/master.min.js"></script>
 

@@ -23,7 +23,7 @@ Vue.http.interceptors.push((request, next) => {
 Vue.config.devtools = true
 Vue.config.debug = true
 
-var App = Vue.extend({})
+var App = {}
 
 var content = {
     article: {
@@ -35,7 +35,8 @@ var content = {
         index: require('./components/articles/index.vue'),
         show: require('./components/articles/show.vue'),
         edit: require('./components/articles/edit.vue')
-    }
+    },
+    container: {template: '<router-view></router-view>'}
 }
 
 var page = {
@@ -51,38 +52,46 @@ var router = new Router({
 
 // Routes
 router.map({
-    '/dashboard': {
-        name:'dashboard',
-        component: dashboard
-    },
-    '/content': {
+    '/': {
         component: container,
         subRoutes: {
-            '/article': {
-                name:'content.article.index',
-                component: content.article.index
+            '/dashboard': {
+                name:'dashboard',
+                component: dashboard
             },
-            '/article/:id': {
-                name:'content.article.show',
-                component: content.article.show
-            },
-            '/article/:id/edit': {
-                name:'content.article.edit',
-                component: content.article.edit
-            },
-            '/course': {
-                name:'content.course.index',
-                component: content.course.index
-            },
-            '/course/:id': {
-                name:'content.course.show',
-                component: content.course.show
-            },
-            '/course/:id/edit': {
-                name:'content.course.edit',
-                component: content.course.edit
+            '/content': {
+                component: content.container,
+                subRoutes: {
+                    '/article': {
+                        name:'content.article.index',
+                        component: content.article.index
+                    },
+                    '/article/:id': {
+                        name:'content.article.show',
+                        component: content.article.show
+                    },
+                    '/article/:id/edit': {
+                        name:'content.article.edit',
+                        component: content.article.edit
+                    },
+                    '/course': {
+                        name:'content.course.index',
+                        component: content.course.index
+                    },
+                    '/course/:id': {
+                        name:'content.course.show',
+                        component: content.course.show
+                    },
+                    '/course/:id/edit': {
+                        name:'content.course.edit',
+                        component: content.course.edit
+                    }
+                }
             }
         }
+    },
+    '*': {
+        component: page.notFound
     }
 })
 
