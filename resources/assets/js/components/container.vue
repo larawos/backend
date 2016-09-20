@@ -897,3 +897,18 @@
 
 </div>
 </template>
+
+<script>
+    import { setLists } from '../vuex/actions'
+
+    export default {
+        vuex: {
+            actions: {
+                setLists: setLists
+            }
+        },
+        ready() {
+            this.setLists('article')
+        }
+    }
+</script>

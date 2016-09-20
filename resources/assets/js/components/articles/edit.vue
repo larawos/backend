@@ -15,7 +15,7 @@
 
 <ol class="breadcrumb">
     <li><a v-link="{ name: 'dashboard' }">Dashboard</a></li>
-    <li><a v-link="{ name: 'article.index' }">Article</a></li>
+    <li><a v-link="{ name: 'content.article.index' }">Article</a></li>
     <li class="active">Edit</li>
 </ol>
 
@@ -30,12 +30,20 @@
 </template>
 
 <script>
+    import { findArticle } from '../../vuex/getters'
+    import { setItem } from '../../vuex/actions'
+
     export default {
-        props: ['article'],
+        vuex: {
+            actions: {
+                setItem: setItem
+            },
+            getters: {
+                article: findArticle
+            }
+        },
         ready() {
-            this.$http.get('/api/article/' + this.$route.params.id).then((response) => {
-                this.article = JSON.parse(response.body).article
-            })
+            this.setItem('article', this.$route.params.id)
         }
     }
 </script>

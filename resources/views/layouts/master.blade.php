@@ -18,9 +18,6 @@
     <!--STYLESHEET-->
     <!--=================================================-->
 
-    <!--Master Stylesheet [ REQUIRED ]-->
-    <link href="/assets/css/master.min.css" rel="stylesheet">
-
     @yield('before-styles-end')
     <!--Nifty Stylesheet [ REQUIRED ]-->
     <link href="/assets/css/nifty.min.css" rel="stylesheet">
@@ -55,8 +52,6 @@
 
 <body>
     @yield('content')
-    <!--Master [ REQUIRED ]-->
-    <script src="/assets/js/master.min.js"></script>
 
     @yield('before-scripts-end')
     <!--Nifty Admin [ RECOMMENDED ]-->

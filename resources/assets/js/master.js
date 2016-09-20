@@ -6,6 +6,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Resource from 'vue-resource'
 
+import app from './components/app.vue'
 import container from './components/container.vue'
 import dashboard from './components/dashboard.vue'
 
@@ -22,8 +23,6 @@ Vue.http.interceptors.push((request, next) => {
 
 Vue.config.devtools = true
 Vue.config.debug = true
-
-var App = {}
 
 var content = {
     article: {
@@ -95,8 +94,4 @@ router.map({
     }
 })
 
-router.start(App, 'body')
-
-const app = new Vue({
-    el: 'body'
-});
+router.start(app, 'body')

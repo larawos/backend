@@ -13,14 +13,13 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:api');
+Route::group(['middleware' => 'auth:api'], function() {
+    Route::group(['namespace' => 'Article'], function () {
+        Route::resource('article', 'ArticleController');
+    });
 
-Route::group(['namespace' => 'Article'], function () {
-    Route::resource('article', 'ArticleController');
-});
-
-Route::group(['namespace' => 'Course'], function () {
-    Route::resource('course', 'CourseController');
+    Route::group(['namespace' => 'Course'], function () {
+        Route::resource('course', 'CourseController');
+    });
+    
 });

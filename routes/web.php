@@ -21,7 +21,7 @@ Route::group(['namespace' => 'Auth'], function() {
     Route::post('logout', 'LoginController@logout');
 });
 
-Route::group([], function() {
+Route::group(['middleware' => 'auth'], function() {
     Route::get('dashboard', 'DashboardController@index');
     Route::get('content/{name?}', 'DashboardController@index');
 });

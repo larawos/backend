@@ -1,5 +1,10 @@
 @extends('layouts.master')
 
+@section('before-styles-end')
+<!--Master Stylesheet [ REQUIRED ]-->
+<link href="/assets/css/master.min.css" rel="stylesheet">
+@endsection
+
 @section('after-styles-end')
 <!--Font Awesome [ OPTIONAL ]-->
 <link href="/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -22,6 +27,8 @@
 @endsection
 
 @section('before-scripts-end')
+<!--Master [ REQUIRED ]-->
+<script src="/assets/js/master.min.js"></script>
 <!--Fast Click [ OPTIONAL ]-->
 <script src="/assets/plugins/fast-click/fastclick.min.js"></script>
 @endsection

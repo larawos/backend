@@ -15,7 +15,7 @@
 
 <ol class="breadcrumb">
     <li><a v-link="{ name: 'dashboard' }">Dashboard</a></li>
-    <li><a v-link="{ name: 'article.index' }">Article</a></li>
+    <li><a v-link="{ name: 'content.article.index' }">Article</a></li>
     <li class="active">Create</li>
 </ol>
 
@@ -31,14 +31,3 @@
     </div>
 </div>
 </template>
-
-<script>
-    export default {
-        props: ['articles'],
-        ready() {
-            this.$http.get('/api/article').then((response) => {
-                this.articles = JSON.parse(response.body).articles.data
-            })
-        }
-    }
-</script>

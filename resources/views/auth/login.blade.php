@@ -1,64 +1,76 @@
-@extends('layouts.app')
+@extends('layouts.master')
+
+@section('before-styles-end')
+<!--Master Stylesheet [ REQUIRED ]-->
+<link href="/assets/css/master.min.css" rel="stylesheet">
+@endsection
+
+@section('after-styles-end')
+<!--Font Awesome [ OPTIONAL ]-->
+<link href="/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<!--Page Load Progress Bar [ OPTIONAL ]-->
+<link href="/assets/plugins/pace/pace.min.css" rel="stylesheet">
+<script src="/assets/plugins/pace/pace.min.js"></script>
+@endsection
+
+@section('before-scripts-end')
+<!--jQuery [ REQUIRED ]-->
+<script src="/assets/js/jquery-2.1.1.min.js"></script>
+<!--BootstrapJS [ RECOMMENDED ]-->
+<script src="/assets/js/bootstrap.min.js"></script>
+@endsection
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
-                <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
-                        {{ csrf_field() }}
-
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
-
-                                @if ($errors->has('email'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
+<div id="container" class="cls-container">
+    
+    <div id="bg-overlay" class="bg-img" style="background-image:url(/assets/img/bg-img/bg-img-2.jpg);"></div>
+    
+    <div class="cls-header cls-header-lg">
+        <div class="cls-brand">
+            <a class="box-inline" href="/">
+                <span class="brand-title">Larawos <span class="text-thin">Admin</span></span>
+            </a>
+        </div>
+    </div>
+    
+    <div class="cls-content">
+        <div class="cls-content-sm panel">
+            <div class="panel-body">
+                <p class="pad-btm">Sign In to your account</p>
+                <form action="{{url('/login')}}" method="POST">
+                {!! csrf_field() !!}
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="fa fa-user"></i></div>
+                            <input type="text" class="form-control" name="email" placeholder="Email address">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="fa fa-asterisk"></i></div>
+                            <input type="password" name="password" class="form-control" placeholder="Password">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-8 text-left checkbox">
+                            <label class="form-checkbox form-icon">
+                            <input type="checkbox" name="remember"> Remember me
+                            </label>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="form-group text-right">
+                            <button class="btn btn-success text-uppercase" type="submit">Sign In</button>
                             </div>
                         </div>
-
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember"> Remember Me
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Login
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                    </div>
+                    <div class="mar-btm"><em>- or -</em></div>
+                    <button class="btn btn-primary btn-lg btn-block" type="button">
+                        <i class="fa fa-facebook fa-fw"></i> Login with Facebook
+                    </button>
+                </form>
             </div>
         </div>
     </div>
+    
 </div>
 @endsection
