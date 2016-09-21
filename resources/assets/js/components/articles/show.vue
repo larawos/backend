@@ -21,9 +21,11 @@
 
 <div id="page-content">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <h3>{{ article.name }}</h3>
-            <pre>{{ article.content }}</pre>
+        </div>
+        <div class="col-md-12">
+            {{{ article.content }}}
         </div>
     </div>
 </div>

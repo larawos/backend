@@ -12,7 +12,7 @@
 
     <!-- Scripts -->
     <script>
-        window.Laravel = {!! json_encode(['csrfToken' => csrf_token(), 'accept' => 'application/json', 'authorization' => auth()->check() ? auth()->user()->api_token : '' ]) !!}
+        window.Laravel = {!! json_encode(['csrfToken' => csrf_token(), 'author' => auth()->user() ]) !!}
     </script>
 
     <!--STYLESHEET-->

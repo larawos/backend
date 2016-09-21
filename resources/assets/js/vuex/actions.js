@@ -35,3 +35,21 @@ export const delItem = ({ dispatch, state }, module, id) => {
     })
     
 }
+
+export const addItem = ({ dispatch, state }, module, data) => {
+
+    Vue.http.post('/api/'+module, data).then((response) => {
+        if (response.status == 200 && response.json().code == 200) {
+            Vue.http.get('/api/'+module).then((response) => {
+                dispatch('SET_'+module.toUpperCase()+'S', response.json())
+            })
+
+            return true
+        }
+    })
+    
+}
+
+export const setForm = ({ dispatch, state }, data) => {
+    dispatch('SET_FORM', data)
+}

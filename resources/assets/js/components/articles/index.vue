@@ -34,7 +34,7 @@
                     <div class="pad-btm form-inline">
                         <div class="row">
                             <div class="col-sm-6 table-toolbar-left">
-                                <button @click="setArticles()" class="btn btn-purple btn-labeled fa fa-plus">Add{{ counterValue }}</button>
+                                <button @click="$router.go({name: 'content.article.create'})" class="btn btn-purple btn-labeled fa fa-plus">Add</button>
                                 <div class="btn-group btn-group">
                                     <button class="btn btn-default"><i class="fa fa-exclamation-circle"></i></button>
                                     <button class="btn btn-default"><i class="fa fa-trash"></i></button>

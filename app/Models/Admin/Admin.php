@@ -4,10 +4,14 @@ namespace App\Models\Admin;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Models\Admin\Traits\Attribute\AdminAttribute;
 
 class Admin extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable
+        , AdminAttribute
+        // , AdminRelationship
+        ;
 
     /**
      * The attributes that are mass assignable.

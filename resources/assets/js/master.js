@@ -1,46 +1,23 @@
 window.$ = window.jQuery = require('jquery')
 require('bootstrap-sass')
 
-import _ from 'lodash'
 import Vue from 'vue'
 import Router from 'vue-router'
 import Resource from 'vue-resource'
-
-import app from './components/app.vue'
-import container from './components/container.vue'
-import dashboard from './components/dashboard.vue'
 
 Vue.use(Router)
 Vue.use(Resource)
 
 Vue.http.interceptors.push((request, next) => {
     request.headers['X-CSRF-TOKEN'] = Laravel.csrfToken;
-    request.headers['Accept'] = Laravel.accept;
-    request.headers['Authorization'] = 'Bearer ' + Laravel.authorization;
+    request.headers['Accept'] = 'application/json';
+    request.headers['Authorization'] = 'Bearer ' + Laravel.author.api_token;
 
     next();
 });
 
 Vue.config.devtools = true
 Vue.config.debug = true
-
-var content = {
-    article: {
-        index: require('./components/articles/index.vue'),
-        show: require('./components/articles/show.vue'),
-        edit: require('./components/articles/edit.vue')
-    },
-    course: {
-        index: require('./components/articles/index.vue'),
-        show: require('./components/articles/show.vue'),
-        edit: require('./components/articles/edit.vue')
-    },
-    container: {template: '<router-view></router-view>'}
-}
-
-var page = {
-    notFound: require('./components/pages/404.vue')
-}
 
 // Routing logic
 var router = new Router({
@@ -52,46 +29,54 @@ var router = new Router({
 // Routes
 router.map({
     '/': {
-        component: container,
+        component: require('./components/container.vue'),
         subRoutes: {
             '/dashboard': {
                 name:'dashboard',
-                component: dashboard
+                component: require('./components/dashboard.vue')
             },
             '/content': {
-                component: content.container,
+                component: {template: '<router-view></router-view>'},
                 subRoutes: {
                     '/article': {
                         name:'content.article.index',
-                        component: content.article.index
+                        component: require('./components/articles/index.vue')
                     },
                     '/article/:id': {
                         name:'content.article.show',
-                        component: content.article.show
+                        component: require('./components/articles/show.vue')
+                    },
+                    '/article/create': {
+                        name:'content.article.create',
+                        component: require('./components/articles/create.vue')
                     },
                     '/article/:id/edit': {
                         name:'content.article.edit',
-                        component: content.article.edit
+                        component: require('./components/articles/edit.vue')
                     },
                     '/course': {
                         name:'content.course.index',
-                        component: content.course.index
+                        component: require('./components/articles/index.vue')
                     },
                     '/course/:id': {
                         name:'content.course.show',
-                        component: content.course.show
+                        component: require('./components/articles/show.vue')
+                    },
+                    '/course/create': {
+                        name:'content.course.create',
+                        component: require('./components/articles/create.vue')
                     },
                     '/course/:id/edit': {
                         name:'content.course.edit',
-                        component: content.course.edit
+                        component: require('./components/articles/edit.vue')
                     }
                 }
             }
         }
     },
     '*': {
-        component: page.notFound
+        component: require('./components/pages/404.vue')
     }
 })
 
-router.start(app, 'body')
+router.start(require('./components/app.vue'), 'body')

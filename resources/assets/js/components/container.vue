@@ -8,9 +8,9 @@
             <!--================================-->
             <div class="navbar-header">
                 <a href="index.html" class="navbar-brand">
-                    <img src="/assets/img/logo.png" alt="Nifty Logo" class="brand-icon">
+                    <img src="/assets/img/logo.png" alt="Larawos Logo" class="brand-icon">
                     <div class="brand-title">
-                        <span class="brand-text">Nifty</span>
+                        <span class="brand-text">Larawos</span>
                     </div>
                 </a>
             </div>
@@ -439,9 +439,9 @@
                     <li id="dropdown-user" class="dropdown">
                         <a href="#" data-toggle="dropdown" class="dropdown-toggle text-right">
                             <span class="pull-right">
-                                <img class="img-circle img-user media-object" src="/assets/img/av1.png" alt="Profile Picture">
+                                <img class="img-circle img-user media-object" :src="author.avatar" alt="Profile Picture">
                             </span>
-                            <div class="username hidden-xs">John Doe</div>
+                            <div class="username hidden-xs">{{author.name}}</div>
                         </a>
 
 
@@ -491,9 +491,10 @@
 
                             <!-- Dropdown footer -->
                             <div class="pad-all text-right">
-                                <a href="pages-login.html" class="btn btn-primary">
+                                <a href="javascript:void(0);" onclick="event.preventDefault();$('input[name=_token]').val(Laravel.csrfToken);$('#logout-form').submit()" class="btn btn-primary">
                                     <i class="fa fa-sign-out fa-fw"></i> Logout
                                 </a>
+                                <form id="logout-form" action="/logout" method="POST"><input type="hidden" name="_token"></form>
                             </div>
                         </div>
                     </li>
@@ -900,11 +901,15 @@
 
 <script>
     import { setLists } from '../vuex/actions'
+    import { author } from '../vuex/getters'
 
     export default {
         vuex: {
             actions: {
                 setLists: setLists
+            },
+            getters: {
+                author: author
             }
         },
         ready() {

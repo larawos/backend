@@ -64,6 +64,10 @@ class EloquentArticleRepository implements ArticleRepositoryContract
     {
         $article = new Article;
 
+        $article->name    = $input['name'];
+        $article->thumb   = $input['thumb'];
+        $article->content = $input['content'];
+
         if ($article->save()) {
             return true;
         }
