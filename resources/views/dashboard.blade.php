@@ -18,8 +18,12 @@
 <link href="/assets/plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet">
 <!--Cropper [ OPTIONAL ]-->
 <link href="/assets/plugins/cropper/cropper.min.css" rel="stylesheet">
+<!--Jspanel [ OPTIONAL ]-->
+<link href="/assets/plugins/jspanel/jquery.jspanel.min.css" rel="stylesheet">
 <!--Summernote [ OPTIONAL ]-->
-<link href="/assets/plugins/summernote/summernote.min.css" rel="stylesheet">
+<link href="//cdn.bootcss.com/summernote/0.8.2/summernote.css" rel="stylesheet">
+<!--Jqueryui [ OPTIONAL ]-->
+<link href="//cdn.bootcss.com/jqueryui/1.12.0/jquery-ui.min.css" rel="stylesheet">
 <!--Page Load Progress Bar [ OPTIONAL ]-->
 <link href="/assets/plugins/pace/pace.min.css" rel="stylesheet">
 <script src="/assets/plugins/pace/pace.min.js"></script>
@@ -46,8 +50,14 @@
 <script src="/assets/plugins/bootstrap-select/bootstrap-select.min.js"></script>
 <!--Cropper [ OPTIONAL ]-->
 <script src="/assets/plugins/cropper/cropper.min.js"></script>
+<!--Jspanel [ OPTIONAL ]-->
+<script src="/assets/plugins/jspanel/jquery.jspanel.min.js"></script>
 <!--Summernote [ OPTIONAL ]-->
-<script src="/assets/plugins/summernote/summernote.min.js"></script>
+<script src="//cdn.bootcss.com/summernote/0.8.2/summernote.min.js"></script>
+<!--Jqueryui [ OPTIONAL ]-->
+<script src="//cdn.bootcss.com/jqueryui/1.12.0/jquery-ui.min.js"></script>
+<!--touch [ OPTIONAL ]-->
+<script src="//cdn.bootcss.com/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
 @endsection
 
 @section('content')

@@ -95,13 +95,25 @@
             }
         },
         ready() {
-            var vm = this;
+            var self = this;
             $("#editor").summernote({
-                onkeyup: function (e) {
-                    // console.log($("#editor").summernote().code())
-                    // vm.setForm({content: $("#editor").summernote().code()})
-                },
-                height:250
+                height:250,
+                callbacks: {
+                    onChange(contents) {
+                        self.setForm({content: contents})
+                        jsPanel.closeChildpanels()
+                        $.jsPanel({
+                            position: {my: "left-bottom",at: "left-bottom"},
+                            contentSize: {width: 300,height: 200},
+                            content: contents,
+                            headerTitle: 'Preview',
+                            theme: "info",
+                            headerLogo: '&nbsp;<i class="fa fa-eye fa-lg"></i>',
+                            resizable: {aspectRatio:true,maxWidth:300}
+                        })
+                    }
+                }
+                
             })
 
             var $image = $('#image'),
@@ -115,7 +127,7 @@
             // Methods
             $(document.body).on('click', '[data-method]', function() {
                 if ($(this).data().method && $(this).data().method === 'getCroppedCanvas') {
-                        vm.setForm({thumb: $image.cropper($(this).data().method, $(this).data().option).toDataURL('image/jpeg')})
+                        self.setForm({thumb: $image.cropper($(this).data().method, $(this).data().option).toDataURL('image/jpeg')})
                     }
             });
             // Import image
