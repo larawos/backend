@@ -18,7 +18,8 @@ class CreateCoursesTable extends Migration
                     $table->string('name');
                     $table->string('thumb');
                     $table->string('description');
-
+                    $table->tinyInteger('source');
+                    $table->tinyInteger('payment');
                     $table->softDeletes();
                     $table->timestamps();
                 });        

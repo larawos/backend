@@ -22,6 +22,5 @@ Route::group(['namespace' => 'Auth'], function() {
 });
 
 Route::group(['middleware' => 'auth'], function() {
-    Route::get('dashboard', 'DashboardController@index');
-    Route::get('content/{name?}', 'DashboardController@index');
+    Route::get('{group?}/{module?}/{frist?}/{second?}', 'DashboardController@index');
 });

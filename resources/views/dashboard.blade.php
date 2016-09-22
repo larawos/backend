@@ -1,8 +1,8 @@
 @extends('layouts.master')
 
 @section('before-styles-end')
-<!--Master Stylesheet [ REQUIRED ]-->
-<link href="/assets/css/master.min.css" rel="stylesheet">
+<link href="//fonts.lug.ustc.edu.cn/css?family=Open+Sans:300,400,600,700&subset=latin" rel="stylesheet">
+<link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 @endsection
 
 @section('after-styles-end')
@@ -16,48 +16,53 @@
 <link href="/assets/plugins/switchery/switchery.min.css" rel="stylesheet">
 <!--Bootstrap Select [ OPTIONAL ]-->
 <link href="/assets/plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet">
-<!--Cropper [ OPTIONAL ]-->
-<link href="/assets/plugins/cropper/cropper.min.css" rel="stylesheet">
-<!--Jspanel [ OPTIONAL ]-->
-<link href="/assets/plugins/jspanel/jquery.jspanel.min.css" rel="stylesheet">
-<!--Summernote [ OPTIONAL ]-->
-<link href="//cdn.bootcss.com/summernote/0.8.2/summernote.css" rel="stylesheet">
-<!--Jqueryui [ OPTIONAL ]-->
-<link href="//cdn.bootcss.com/jqueryui/1.12.0/jquery-ui.min.css" rel="stylesheet">
 <!--Page Load Progress Bar [ OPTIONAL ]-->
 <link href="/assets/plugins/pace/pace.min.css" rel="stylesheet">
-<script src="/assets/plugins/pace/pace.min.js"></script>
+<!--Cropper [ OPTIONAL ]-->
+<link href="/assets/plugins/cropper/cropper.min.css" rel="stylesheet">
+<!--Summernote [ OPTIONAL ]-->
+<link href="/assets/plugins/summernote/summernote.min.css" rel="stylesheet">
+<!--Chosen [ OPTIONAL ]-->
+<link href="/assets/plugins/chosen/chosen.min.css" rel="stylesheet">
+<!--Bootstrap Tags Input [ OPTIONAL ]-->
+<link href="/assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet">
+<!--Master Stylesheet [ REQUIRED ]-->
+<link href="/assets/css/master.min.css" rel="stylesheet">
 @endsection
 
 @section('before-scripts-end')
-<!--Master [ REQUIRED ]-->
-<script src="/assets/js/master.min.js"></script>
-<!--Fast Click [ OPTIONAL ]-->
-<script src="/assets/plugins/fast-click/fastclick.min.js"></script>
+<!--Jquery [ REQUIRED ]-->
+<script src="//cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
+<!--Bootstrap [ REQUIRED ]-->
+<script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 @endsection
 
 @section('after-scripts-end')
-<!--Morris.js [ OPTIONAL ]-->
+<!--summernote [ OPTIONAL ]-->
+<script src="/assets/plugins/summernote/summernote.min.js"></script>
+<!--cropper [ OPTIONAL ]-->
+<script src="/assets/plugins/cropper/cropper.min.js"></script>
+<!--fastclick [ OPTIONAL ]-->
+<script src="/assets/plugins/fast-click/fastclick.min.js"></script>
+<!--morris [ OPTIONAL ]-->
 <script src="/assets/plugins/morris-js/morris.min.js"></script>
 <script src="/assets/plugins/morris-js/raphael-js/raphael.min.js"></script>
-<!--Sparkline [ OPTIONAL ]-->
+<!--sparkline [ OPTIONAL ]-->
 <script src="/assets/plugins/sparkline/jquery.sparkline.min.js"></script>
-<!--Skycons [ OPTIONAL ]-->
+<!--skycons [ OPTIONAL ]-->
 <script src="/assets/plugins/skycons/skycons.min.js"></script>
-<!--Switchery [ OPTIONAL ]-->
+<!--switchery [ OPTIONAL ]-->
 <script src="/assets/plugins/switchery/switchery.min.js"></script>
-<!--Bootstrap Select [ OPTIONAL ]-->
+<!--bootstrap select [ OPTIONAL ]-->
 <script src="/assets/plugins/bootstrap-select/bootstrap-select.min.js"></script>
-<!--Cropper [ OPTIONAL ]-->
-<script src="/assets/plugins/cropper/cropper.min.js"></script>
-<!--Jspanel [ OPTIONAL ]-->
-<script src="/assets/plugins/jspanel/jquery.jspanel.min.js"></script>
-<!--Summernote [ OPTIONAL ]-->
-<script src="//cdn.bootcss.com/summernote/0.8.2/summernote.min.js"></script>
-<!--Jqueryui [ OPTIONAL ]-->
-<script src="//cdn.bootcss.com/jqueryui/1.12.0/jquery-ui.min.js"></script>
-<!--touch [ OPTIONAL ]-->
-<script src="//cdn.bootcss.com/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+<!--Page Load Progress Bar [ OPTIONAL ]-->
+<script src="/assets/plugins/pace/pace.min.js"></script>
+<!--Page Load Progress Bar [ OPTIONAL ]-->
+<script src="/assets/plugins/chosen/chosen.jquery.min.js"></script>
+<!--Bootstrap Tags Input [ OPTIONAL ]-->
+<script src="/assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js"></script>
+<!--master [ REQUIRED ]-->
+<script src="/assets/js/master.min.js"></script>
 @endsection
 
 @section('content')

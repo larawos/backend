@@ -1,6 +1,3 @@
-window.$ = window.jQuery = require('jquery')
-require('bootstrap-sass')
-
 import Vue from 'vue'
 import Router from 'vue-router'
 import Resource from 'vue-resource'

@@ -901,7 +901,7 @@
 
 <script>
     import { setLists } from '../vuex/actions'
-    import { author } from '../vuex/getters'
+    import { getAuthor } from '../vuex/getters'
 
     export default {
         vuex: {
@@ -909,7 +909,7 @@
                 setLists: setLists
             },
             getters: {
-                author: author
+                author: getAuthor
             }
         },
         ready() {
