@@ -21,7 +21,7 @@
 
 <div id="page-content">
     <div class="row">
-        <div class="col-xs-12">
+        <div class="col-md-12 col-sm-8">
             <div class="panel">
                 <div class="panel-heading">
                     <div class="panel-control">
@@ -68,7 +68,10 @@
                                 <tr>
                                     <th style="width:4ex">ID</th>
                                     <th>Name</th>
-                                    <th class="text-center">Category</th>
+                                    <th class="text-center">Source</th>
+                                    <th class="text-center">Payment</th>
+                                    <th class="text-center">Likes</th>
+                                    <th class="text-center">Stars</th>
                                     <th class="text-right">Actions</th>
                                 </tr>
                             </thead>
@@ -76,9 +79,12 @@
                                 <tr v-for="article in articles.data">
                                     <td><a v-link="{name: 'content.article.show', params: {id: article.id}}" class="btn-link">{{article.id}}</a></td>
                                     <td>{{article.name}}</td>
-                                    <td class="text-center"><span class="label label-table label-success">Laravel</span></td>
+                                    <td class="text-center"><span :class="{'label-mint' : article.source == 1, 'label-danger' : article.source == 0}" class="label label-table">{{article.source ? 'Publish' : 'Republish'}}</span></td>
+                                    <td class="text-center"><span :class="{'label-mint' : article.payment == 0, 'label-warning' : article.payment == 1, 'label-danger' : article.payment == 2}" class="label label-table">{{article.payment ? article.payment == 1 ? 'Membership' : 'Charge' : 'Free'}}</span></td>
+                                    <td class="text-center">{{article.likes}}</td>
+                                    <td class="text-center">{{article.stars}}</td>
                                     <td class="text-right">
-                                        <a class="btn btn-xs btn-default add-tooltip" data-toggle="tooltip" v-link="{name: 'content.article.edit', params: {id: article.id}}" data-original-title="Edit" data-container="body"><i class="fa fa-pencil"></i></a>
+                                        <a class="btn btn-xs btn-default add-tooltip" data-toggle="tooltip" v-link="{name: 'content.article.edit', params: {id: article.id}}" @click="setForm(article)" data-original-title="Edit" data-container="body"><i class="fa fa-pencil"></i></a>
                                         <a class="btn btn-xs btn-danger add-tooltip"  data-toggle="tooltip" href="javascript:void(0);" @click="delItem('article', article.id)" data-original-title="Delete" data-container="body"><i class="fa fa-times"></i></a>
                                     </td>
                                 </tr>
@@ -94,20 +100,21 @@
 
 <script>
     import { getArticles } from '../../vuex/getters'
-    import { setLists, delItem } from '../../vuex/actions'
+    import { delItem, setForm, setLists } from '../../vuex/actions'
 
     export default {
         vuex: {
             actions: {
-                setLists: setLists,
-                delItem: delItem
+                delItem: delItem,
+                setForm: setForm,
+                setLists: setLists
             },
             getters: {
                 articles: getArticles
             }
         },
         ready() {
-            
+            this.setLists('article')
         }
     }
 </script>

@@ -21,6 +21,8 @@ class CreateArticlesTable extends Migration
             $table->text('content');
             $table->tinyInteger('source');
             $table->tinyInteger('payment');
+            $table->integer('likes')->unsigned()->default(0);
+            $table->integer('stars')->unsigned()->default(0);
 
             $table->softDeletes();
             $table->timestamps();

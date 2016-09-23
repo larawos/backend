@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Resource from 'vue-resource'
+import tagsinput from '../plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js'
 
 Vue.use(Router)
 Vue.use(Resource)

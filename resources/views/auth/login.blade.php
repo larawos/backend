@@ -1,8 +1,8 @@
 @extends('layouts.master')
 
 @section('before-styles-end')
-<!--Master Stylesheet [ REQUIRED ]-->
-<link href="/assets/css/master.min.css" rel="stylesheet">
+<link href="//fonts.lug.ustc.edu.cn/css?family=Open+Sans:300,400,600,700&subset=latin" rel="stylesheet">
+<link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 @endsection
 
 @section('after-styles-end')
@@ -14,10 +14,10 @@
 @endsection
 
 @section('before-scripts-end')
-<!--jQuery [ REQUIRED ]-->
-<script src="/assets/js/jquery-2.1.1.min.js"></script>
-<!--BootstrapJS [ RECOMMENDED ]-->
-<script src="/assets/js/bootstrap.min.js"></script>
+<!--Jquery [ REQUIRED ]-->
+<script src="//cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
+<!--Bootstrap [ REQUIRED ]-->
+<script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 @endsection
 
 @section('content')

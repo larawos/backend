@@ -59,8 +59,6 @@
 <script src="/assets/plugins/pace/pace.min.js"></script>
 <!--Page Load Progress Bar [ OPTIONAL ]-->
 <script src="/assets/plugins/chosen/chosen.jquery.min.js"></script>
-<!--Bootstrap Tags Input [ OPTIONAL ]-->
-<script src="/assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js"></script>
 <!--master [ REQUIRED ]-->
 <script src="/assets/js/master.min.js"></script>
 @endsection

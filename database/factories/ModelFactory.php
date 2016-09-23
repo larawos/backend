@@ -26,7 +26,12 @@ $factory->define(App\Models\Article\Article::class, function (Faker\Generator $f
     return [
         'name' => $faker->sentence,
         'thumb' => $faker->imageUrl(),
+        'description' => $faker->sentence,
         'content' => $faker->text(3000),
+        'source' => mt_rand(0, 1),
+        'payment' => mt_rand(0, 2),
+        'likes' => 0,
+        'stars' => 0
     ];
 });
 
@@ -34,14 +39,10 @@ $factory->define(App\Models\Course\Course::class, function (Faker\Generator $fak
     return [
         'name' => $faker->sentence,
         'thumb' => $faker->imageUrl(),
-        'description' => $faker->text(),
-    ];
-});
-
-$factory->define(App\Models\Course\CourseVideo::class, function (Faker\Generator $faker) {
-    return [
-        'course_id' => mt_rand(1, 500),
-        'name' => $faker->sentence,
-        'file_token' => str_random(60)
+        'description' => $faker->sentence,
+        'source' => mt_rand(0, 1),
+        'payment' => mt_rand(0, 2),
+        'likes' => 0,
+        'stars' => 0
     ];
 });

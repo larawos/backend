@@ -34,5 +34,21 @@ class AppServiceProvider extends ServiceProvider
             \App\Contracts\CourseRepositoryContract::class,
             \App\Repositories\Course\EloquentCourseRepository::class
         );
+        $this->app->bind(
+            \App\Contracts\CategoryRepositoryContract::class,
+            \App\Repositories\Category\EloquentCategoryRepository::class
+        );
+        $this->app->bind(
+            \App\Contracts\TypeRepositoryContract::class,
+            \App\Repositories\Type\EloquentTypeRepository::class
+        );
+        $this->app->bind(
+            \App\Contracts\TagRepositoryContract::class,
+            \App\Repositories\Tag\EloquentTagRepository::class
+        );
+        $this->app->bind(
+            \App\Contracts\FileRepositoryContract::class,
+            \App\Repositories\File\EloquentFileRepository::class
+        );
     }
 }

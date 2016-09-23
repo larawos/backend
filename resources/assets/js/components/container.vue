@@ -900,20 +900,13 @@
 </template>
 
 <script>
-    import { setLists } from '../vuex/actions'
     import { getAuthor } from '../vuex/getters'
 
     export default {
         vuex: {
-            actions: {
-                setLists: setLists
-            },
             getters: {
                 author: getAuthor
             }
-        },
-        ready() {
-            this.setLists('article')
         }
     }
 </script>

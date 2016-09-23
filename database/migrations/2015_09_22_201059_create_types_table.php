@@ -22,8 +22,8 @@ class CreateTypesTable extends Migration
 
             $table->foreign('category_id')
                 ->references('id')
-                ->on('categorys')
-                ->onDelele('cascade');
+                ->on('categories')
+                ->onDelete('cascade');
         });
     }
 

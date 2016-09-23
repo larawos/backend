@@ -1,4 +1,8 @@
 .chosen-container {margin-bottom:0;}
 .chosen-choices {padding:0 5px !important;}
 .search-choice {margin:1px !important;}
-.bootstrap-tagsinput{margin-bottom:0;padding:1px 5px 0;}
+.bootstrap-tagsinput{margin-bottom:0;padding:1px 5px 0;height:31px;line-height:31px;}
+.img-container {height:170px; width:170px;overflow:hidden;}
+.preview-container {position:fixed;top:0;z-index:999;width:300px;}
+.preview-thumb {float:left;}
+#preview-content {max-height: 150px;overflow-y:auto;overflow-wrap: break-word;}

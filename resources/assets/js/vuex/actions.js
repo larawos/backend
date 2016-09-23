@@ -10,14 +10,6 @@ export const setLists = ({ dispatch, state }, module) => {
 
 export const setItem = ({ dispatch, state }, module, id) => {
 
-    if (typeof(state.articles.data) != 'undefined') {
-        for (var i = 0; i < state.articles.data.length; i++) {
-            if (state.articles.data[i].id == id) {
-                return dispatch('SET_'+module.toUpperCase(), state.articles.data[i])
-            }
-        }
-    }
-
     Vue.http.get('/api/'+module+'/'+id).then((response) => {
         dispatch('SET_'+module.toUpperCase(), response.json())
     })
@@ -28,9 +20,7 @@ export const delItem = ({ dispatch, state }, module, id) => {
 
     Vue.http.delete('/api/'+module+'/'+id).then((response) => {
         if (response.status == 200 && response.json().code == 200) {
-            Vue.http.get('/api/'+module).then((response) => {
-                dispatch('SET_'+module.toUpperCase()+'S', response.json())
-            })
+            //
         }
     })
     
@@ -40,11 +30,17 @@ export const addItem = ({ dispatch, state }, module, data) => {
 
     Vue.http.post('/api/'+module, data).then((response) => {
         if (response.status == 200 && response.json().code == 200) {
-            Vue.http.get('/api/'+module).then((response) => {
-                dispatch('SET_'+module.toUpperCase()+'S', response.json())
-            })
+            //
+        }
+    })
+    
+}
 
-            return true
+export const editItem = ({ dispatch, state }, module, id, data) => {
+
+    Vue.http.put('/api/'+module+'/'+id, data).then((response) => {
+        if (response.status == 200 && response.json().code == 200) {
+            //
         }
     })
     
@@ -52,4 +48,8 @@ export const addItem = ({ dispatch, state }, module, data) => {
 
 export const setForm = ({ dispatch, state }, data) => {
     dispatch('SET_FORM', data)
+}
+
+export const initForm = ({ dispatch, state }) => {
+    dispatch('INIT_FORM')
 }

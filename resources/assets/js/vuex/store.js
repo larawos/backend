@@ -6,36 +6,8 @@ Vue.use(Vuex)
 
 const state = {
     author: Laravel.author,
-    form: {traits:[]},
-    categorys: [
-        {
-            id:1,
-            name:'Framework',
-            types: [
-                {id:1,category_id:1,icon:'<i class="fa fa-check"><i/>',name:'laravel'},
-                {id:2,category_id:1,icon:'<i class="fa fa-check"><i/>',name:'yii'},
-                {id:3,category_id:1,icon:'<i class="fa fa-check"><i/>',name:'tp'},
-            ]
-        },
-        {
-            id:2,
-            name:'Language',
-            types: [
-                {id:4,category_id:2,icon:'<i class="fa fa-check"><i/>',name:'php'},
-                {id:5,category_id:2,icon:'<i class="fa fa-check"><i/>',name:'java'},
-                {id:6,category_id:2,icon:'<i class="fa fa-check"><i/>',name:'python'},
-            ]
-        },
-        {
-            id:3,
-            name:'System',
-            types: [
-                {id:7,category_id:3,icon:'<i class="fa fa-check"><i/>',name:'window'},
-                {id:8,category_id:3,icon:'<i class="fa fa-check"><i/>',name:'linux'},
-                {id:9,category_id:3,icon:'<i class="fa fa-check"><i/>',name:'mac'}
-            ]
-        }
-    ],
+    form: {thumb: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWBAMAAADOL2zRAAAAG1BMVEUyQE7////Lz9Kyt7zl5+hLV2SYn6Zlb3p+h5C1Qm8QAAABi0lEQVRoge2TvW/CMBDFLwTijD1jSMakSj9GIrXqmgCqGKFEnYNE9wBDV+hfXtuQdCqp1HZp30+K7l7sPPucMxEAAAAAAAAAAAAAAOAv0Rn9nJeT/Y7XI62/5Wy9nhOeVESy4KgRhbUd62cX8/Vcx2WuHlq9PFaXPCSa8v2HyEsznJa0ZJlwn8jnccJlm9dqNieREMUhNUIoO1wMKJ5pnzyibkC0zVq8hJof83RPjXBDG7yhL82LIiQnOFvg0cu1k/yMVvqYatEZ2GEhO8ExksvypdWrazeuPz5or1o4F8dxdUp0yW/MV21eTmSSxYA2usZa1L2iTok5PrHm6kv7Sge0KKkRp+30ZNcWK/pWplGLlz0ijwNyRtQIc0yHPXl9T5ppRShMrCv/1EuoSv90ObT11cJXlc8hbYJefmN6YiRY98YmO+dlajro7pSvkrpm1VqkKlc81c35dOrVLauE9+e8XL2X3p25NQl5ZtVa+LGs3vhWv9nlPJnb2HKHAAAAAAAAAAAAAAAA/5d3QBw11isRkt4AAAAASUVORK5CYII='},
+    categorys: [],
     articles: {},
     article: {}
 }
@@ -55,6 +27,9 @@ const mutations = {
     },
     SET_ARTICLE (state, article) {
         state.article = article
+    },
+    INIT_FORM (state, data) {
+        state.form = {thumb: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWBAMAAADOL2zRAAAAG1BMVEUyQE7////Lz9Kyt7zl5+hLV2SYn6Zlb3p+h5C1Qm8QAAABi0lEQVRoge2TvW/CMBDFLwTijD1jSMakSj9GIrXqmgCqGKFEnYNE9wBDV+hfXtuQdCqp1HZp30+K7l7sPPucMxEAAAAAAAAAAAAAAOAv0Rn9nJeT/Y7XI62/5Wy9nhOeVESy4KgRhbUd62cX8/Vcx2WuHlq9PFaXPCSa8v2HyEsznJa0ZJlwn8jnccJlm9dqNieREMUhNUIoO1wMKJ5pnzyibkC0zVq8hJof83RPjXBDG7yhL82LIiQnOFvg0cu1k/yMVvqYatEZ2GEhO8ExksvypdWrazeuPz5or1o4F8dxdUp0yW/MV21eTmSSxYA2usZa1L2iTok5PrHm6kv7Sge0KKkRp+30ZNcWK/pWplGLlz0ijwNyRtQIc0yHPXl9T5ppRShMrCv/1EuoSv90ObT11cJXlc8hbYJefmN6YiRY98YmO+dlajro7pSvkrpm1VqkKlc81c35dOrVLauE9+e8XL2X3p25NQl5ZtVa+LGs3vhWv9nlPJnb2HKHAAAAAAAAAAAAAAAA/5d3QBw11isRkt4AAAAASUVORK5CYII='}
     }
 }
 
