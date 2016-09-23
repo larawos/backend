@@ -27,7 +27,7 @@ class ArticleController extends Controller
 
     public function index()
     {
-        return $this->articles->getPaginated(10, 'id', 'desc');
+        return $this->articles->getListWithAll();
     }
 
     public function show($id)

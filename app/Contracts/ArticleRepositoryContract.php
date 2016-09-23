@@ -15,12 +15,26 @@ interface ArticleRepositoryContract
     public function find($id);
 
     /**
+     * @param  $id
+     * @return mixed
+     */
+    public function findWithAll($id);
+
+    /**
      * @param  $per_page
      * @param  string      $order_by
      * @param  string      $sort
      * @return \Illuminate\Pagination\Paginator
      */
     public function getPaginated($per_page, $order_by = 'id', $sort = 'asc');
+
+    /**
+     * @param  $per_page
+     * @param  string      $order_by
+     * @param  string      $sort
+     * @return \Illuminate\Pagination\Paginator
+     */
+    public function getPaginatedWithAll($per_page, $order_by = 'id', $sort = 'asc');
 
     /**
      * @param  $per_page

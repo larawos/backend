@@ -12,4 +12,9 @@ trait TypeRelationship
     {
         return $this->belongsTo('App\Models\Category\Category');
     }
+
+    public function articles()
+    {
+        return $this->morphedByMany('App\Models\Article\Article', 'typeable');
+    }
 }

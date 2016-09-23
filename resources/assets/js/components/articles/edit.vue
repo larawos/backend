@@ -66,7 +66,7 @@
                                 </div>
                                 <div class="btn-group mar-rgt">
                                     <label :class="{'active' : form.source == 0}" class="mar-no form-radio form-icon btn btn-labeled btn-mint"><input v-model="form.source" value="0" type="radio" name="source"> Republish</label>
-                                    <label :class="{'active' : form.source == 1}" class="mar-no form-radio form-icon btn btn-labeled btn-mint"><input v-model="form.source" value="1" type="radio" name="source"> Original</label>
+                                    <label :class="{'active' : form.source == 1}" class="mar-no form-radio form-icon btn btn-labeled btn-mint"><input v-model="form.source" value="1" type="radio" name="source"> Publish</label>
                                 </div>
                                 <div class="btn-group">
                                     <label :class="{'active' : form.payment == 0}" class="mar-no form-radio form-icon btn btn-labeled btn-mint"><input v-model="form.payment" value="0" type="radio" name="payment"> Free</label>
@@ -110,25 +110,22 @@
 </template>
 
 <script>
-    import { editItem, setLists } from '../../vuex/actions'
+    import { editItem } from '../../vuex/actions'
     import { getForm, getCategorys, findArticle } from '../../vuex/getters'
 
     export default {
         vuex: {
             actions: {
-                editItem: editItem,
-                setLists: setLists
+                editItem: editItem
             },
             getters: {
                 form: getForm,
-                categorys: getCategorys,
-                article: findArticle
+                categorys: getCategorys
             }
         },
         ready() {
-            this.setLists('category');
             var self = this;
-            $("input[data-role=tagsinput], select[multiple][data-role=tagsinput]").tagsinput()
+            $("input[data-role=tagsinput], select[multiple][data-role=tagsinput]").tagsinput({maxTags:3, maxChars:8, trimValue: true})
             $('#types').chosen({width:'100%'}).change(function(){
                 self.setForm({types: $(this).val()})
             });

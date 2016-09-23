@@ -19,11 +19,6 @@ class CreateStarsTable extends Migration
             $table->unsignedInteger('starable_id');
             $table->string('starable_type');
             $table->timestamps();
-
-            $table->foreign('user_id')
-                ->references('id')
-                ->on('users')
-                ->onDelete('cascade');
         });
     }
 

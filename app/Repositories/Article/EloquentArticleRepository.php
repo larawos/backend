@@ -23,6 +23,18 @@ class EloquentArticleRepository implements ArticleRepositoryContract
     }
 
     /**
+     * @param  $id
+     * @throws GeneralException
+     * @return mixed
+     */
+    public function findWithAll($id)
+    {
+        return Article::with('types')
+            ->with('tags')
+            ->findOrFail($id);
+    }
+
+    /**
      * @param  $per_page
      * @param  string      $order_by
      * @param  string      $sort
@@ -31,6 +43,20 @@ class EloquentArticleRepository implements ArticleRepositoryContract
     public function getPaginated($per_page, $order_by = 'id', $sort = 'asc')
     {
         return Article::orderBy($order_by, $sort)
+            ->paginate($per_page);
+    }
+
+    /**
+     * @param  $per_page
+     * @param  string      $order_by
+     * @param  string      $sort
+     * @return \Illuminate\Pagination\Paginator
+     */
+    public function getPaginatedWithAll($per_page, $order_by = 'id', $sort = 'asc')
+    {
+        return Article::orderBy($order_by, $sort)
+            ->with('types')
+            ->with('tags')
             ->paginate($per_page);
     }
 
@@ -64,11 +90,22 @@ class EloquentArticleRepository implements ArticleRepositoryContract
     {
         $article = new Article;
 
-        $article->name    = $input['name'];
-        $article->thumb   = $input['thumb'];
-        $article->content = $input['content'];
+        $article->name        = $input['name'];
+        $article->thumb       = 'http://lorempixel.com/640/480/?43700';
+        $article->description = $input['description'];
+        $article->content     = $input['content'];
+        $article->source      = $input['source'];
+        $article->payment     = $input['payment'];
 
         if ($article->save()) {
+            foreach ($input['types'] as $type_id) {
+                $article->types()->attach($type_id);
+            }
+
+            foreach (explode(',', $input['tags']) as $name) {
+                $article->tags()->create(compact('name'));
+            }
+
             return true;
         }
 

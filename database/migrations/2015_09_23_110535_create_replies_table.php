@@ -21,16 +21,6 @@ class CreateRepliesTable extends Migration
             $table->integer('likes')->unsigned()->default(0);
             $table->softDeletes();
             $table->timestamps();
-
-            $table->foreign('user_id')
-                ->references('id')
-                ->on('users')
-                ->onDelete('cascade');
-
-            $table->foreign('comment_id')
-                ->references('id')
-                ->on('comments')
-                ->onDelete('cascade');
         });
     }
 

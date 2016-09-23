@@ -19,11 +19,6 @@ class CreateTypesTable extends Migration
             $table->string('name');
             $table->softDeletes();
             $table->timestamps();
-
-            $table->foreign('category_id')
-                ->references('id')
-                ->on('categories')
-                ->onDelete('cascade');
         });
     }
 

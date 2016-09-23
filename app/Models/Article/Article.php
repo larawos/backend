@@ -11,7 +11,7 @@ class Article extends Model
 {
     use SoftDeletes
         // , ArticleAttribute
-        // , ArticleRelationship
+        , ArticleRelationship
         ;
 
     /**

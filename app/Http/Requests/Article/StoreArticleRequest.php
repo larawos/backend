@@ -24,9 +24,13 @@ class StoreArticleRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'    => 'required',
-            'thumb'   => 'required',
-            'content' => 'required'
+            'name'        => 'required',
+            'thumb'       => 'required',
+            'description' => 'required',
+            'source'      => 'required',
+            'payment'     => 'required',
+            'types'       => 'required',
+            'tags'        => 'required',
         ];
     }
 }

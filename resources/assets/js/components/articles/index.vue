@@ -34,7 +34,7 @@
                     <div class="pad-btm form-inline">
                         <div class="row">
                             <div class="col-sm-6 table-toolbar-left">
-                                <button @click="$router.go({name: 'content.article.create'})" class="btn btn-purple btn-labeled fa fa-plus">Add</button>
+                                <a v-link="{name: 'content.article.create'}" @click="initForm()" class="btn btn-purple btn-labeled fa fa-plus">Add</a>
                                 <div class="btn-group btn-group">
                                     <button class="btn btn-default"><i class="fa fa-exclamation-circle"></i></button>
                                     <button class="btn btn-default"><i class="fa fa-trash"></i></button>
@@ -100,13 +100,14 @@
 
 <script>
     import { getArticles } from '../../vuex/getters'
-    import { delItem, setForm, setLists } from '../../vuex/actions'
+    import { delItem, setForm, initForm, setLists } from '../../vuex/actions'
 
     export default {
         vuex: {
             actions: {
                 delItem: delItem,
                 setForm: setForm,
+                initForm: initForm,
                 setLists: setLists
             },
             getters: {
@@ -115,6 +116,7 @@
         },
         ready() {
             this.setLists('article')
+            this.setLists('category')
         }
     }
 </script>
