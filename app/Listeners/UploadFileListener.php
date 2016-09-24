@@ -8,7 +8,7 @@ use App\Events\UploadFile;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class UploadFileListener
+class UploadFileListener implements ShouldQueue
 {
     /**
      * Create the event listener.
