@@ -36,7 +36,7 @@ class ArticleService
     public function create($input)
     {
 
-        $file = base64_to_binary($input['thumb']);
+        $file = parse_base64($input['thumb']);
 
         event(new UploadFile($file));
         
@@ -48,7 +48,7 @@ class ArticleService
 
         if (!empty($matchs)) {
             foreach ($matchs[1] as $key => $match) {
-                $file = base64_to_binary($match);
+                $file = parse_base64($match);
 
                 event(new UploadFile($file));
 

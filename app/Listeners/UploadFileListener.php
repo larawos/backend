@@ -29,7 +29,7 @@ class UploadFileListener implements ShouldQueue
     public function handle(UploadFile $event)
     {
         if (!Storage::exists($event->file->get('name'))) {
-            $result = Storage::put($event->file->get('name'), $event->file->get('content'));
+            $result = Storage::put($event->file->get('name'), base64_decode($event->file->get('content')));
             if ($result) {
                 Log::info('upload [file:'.$event->file->get('name').'] success.');
             } else {

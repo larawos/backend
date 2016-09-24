@@ -9,12 +9,12 @@ if (! function_exists('api_token')) {
 
 }
 
-if (! function_exists('base64_to_binary')) {
+if (! function_exists('parse_base64')) {
     
-    function base64_to_binary($content)
+    function parse_base64($content)
     {
         $name = md5_file($content);
-        $content = base64_decode(substr($content, strpos($content, 'base64,') + 7));
+        $content = substr($content, strpos($content, 'base64,') + 7);
         return collect(compact('name', 'content'));
     }
 
