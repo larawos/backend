@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => 'local',
+    'default' => 'qiniu',
 
     /*
     |--------------------------------------------------------------------------
@@ -52,6 +52,19 @@ return [
             'driver' => 'local',
             'root' => storage_path('app/public'),
             'visibility' => 'public',
+        ],
+
+        'qiniu' => [
+            'driver'  => 'qiniu',
+            'domains' => [
+                'default'   => 'odzswc2ob.bkt.clouddn.com', //你的七牛域名
+                'https'     => '',         //你的HTTPS域名
+                'custom'    => 'cloud.larawos.com',                //你的自定义域名
+             ],
+            'access_key'=> 'holt0ceGQYO8zTp_ngVoRn6kRx_GYxZyVPBrHNM4',  //AccessKey
+            'secret_key'=> 'WgTKLeyWB3UPJixnZ8UsRqMQGUUt7dUL2H1t3dAR',  //SecretKey
+            'bucket'    => 'larawos',  //Bucket名字
+            'notify_url'=> '',  //持久化处理回调地址
         ],
 
         's3' => [

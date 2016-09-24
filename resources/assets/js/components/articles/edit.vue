@@ -81,7 +81,7 @@
                     </div>
                     <div class="panel-footer text-right">
                         <button @click="$router.go({name: 'content.article.index'})" type="button" class="btn btn-warning btn-labeled fa fa-reply fa-lg">Cancel</button>
-                        <button @click="editItem('article', $router.params.id, form)" type="button" class="btn btn-primary btn-labeled fa fa-send fa-lg">Submit</button>
+                        <button @click="editItem('article', form.id, form)" type="button" class="btn btn-primary btn-labeled fa fa-send fa-lg">Submit</button>
                     </div>
                 </form>
             </div>
@@ -110,13 +110,14 @@
 </template>
 
 <script>
-    import { editItem } from '../../vuex/actions'
+    import { editItem, setForm } from '../../vuex/actions'
     import { getForm, getCategorys, findArticle } from '../../vuex/getters'
 
     export default {
         vuex: {
             actions: {
-                editItem: editItem
+                editItem: editItem,
+                setForm: setForm
             },
             getters: {
                 form: getForm,

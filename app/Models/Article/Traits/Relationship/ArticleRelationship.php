@@ -17,4 +17,9 @@ trait ArticleRelationship
     {
         return $this->morphToMany('App\Models\Tag\Tag', 'tagable');
     }
+
+    public function files()
+    {
+        return $this->morphToMany('App\Models\File\File', 'fileable');
+    }
 }

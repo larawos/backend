@@ -4,6 +4,8 @@ namespace App\Repositories\Article;
 
 use App\Contracts\ArticleRepositoryContract;
 use App\Models\Article\Article;
+use App\Models\Tag\Tag;
+use App\Models\File\File;
 use App\Exceptions\GeneralException;
 
 /**
@@ -91,7 +93,7 @@ class EloquentArticleRepository implements ArticleRepositoryContract
         $article = new Article;
 
         $article->name        = $input['name'];
-        $article->thumb       = 'http://lorempixel.com/640/480/?43700';
+        $article->thumb       = $input['thumb'];
         $article->description = $input['description'];
         $article->content     = $input['content'];
         $article->source      = $input['source'];
@@ -103,7 +105,24 @@ class EloquentArticleRepository implements ArticleRepositoryContract
             }
 
             foreach (explode(',', $input['tags']) as $name) {
-                $article->tags()->create(compact('name'));
+                $tag = Tag::where(compact('name'))->first();
+                if (empty($tag)) {
+                    $article->tags()->create(compact('name'));
+                } else {
+                    $article->tags()->attach($tag->id);
+                }
+            }
+
+            $this->createOrAttachFile($article, ['name' => $input['thumb']]);
+
+            preg_match_all('/\[file:.*?\]/', $input['content'], $matches);
+
+            $matches = collect($matches)->filter()->toArray();
+
+            if (!empty($matches)) {
+                foreach ($matches[0] as $key => $name) {
+                    $this->createOrAttachFile($article, compact('name'));
+                }
             }
 
             return true;
@@ -122,10 +141,34 @@ class EloquentArticleRepository implements ArticleRepositoryContract
     {
         $article = $this->find($id);
 
-        if ($article->update($input)) {
+        if ($article->update(collect($input)->except(['types', 'tags'])->toArray())) {
             // For whatever reason this just wont work in the above call, so a second is needed for now
+            $article->save();
 
-            // $article->save();
+            foreach ($input['types'] as $type_id) {
+                $article->types()->attach($type_id);
+            }
+
+            foreach (explode(',', $input['tags']) as $name) {
+                $tag = Tag::where(compact('name'))->first();
+                if (empty($tag)) {
+                    $article->tags()->create(compact('name'));
+                } else {
+                    $article->tags()->attach($tag->id);
+                }
+            }
+
+            $this->createOrAttachFile($article, ['name' => $input['thumb']]);
+
+            preg_match_all('/\[file:.*?\]/', $input['content'], $matches);
+
+            $matches = collect($matches)->filter()->toArray();
+
+            if (!empty($matches)) {
+                foreach ($matches[0] as $key => $name) {
+                    $this->createOrAttachFile($article, compact('name'));
+                }
+            }
 
             return true;
         }
@@ -179,6 +222,17 @@ class EloquentArticleRepository implements ArticleRepositoryContract
         }
 
         throw new GeneralException('restore article failed.');
+    }
+
+    protected function createOrAttachFile($model, $input)
+    {
+        $file = File::where($input)->first();
+
+        if (empty($file)) {
+            $model->files()->create($input);
+        } else {
+            $model->files()->attach($file->id);
+        }
     }
 
 }

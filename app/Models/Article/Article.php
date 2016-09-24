@@ -10,7 +10,7 @@ use App\Models\Article\Traits\Relationship\ArticleRelationship;
 class Article extends Model
 {
     use SoftDeletes
-        // , ArticleAttribute
+        , ArticleAttribute
         , ArticleRelationship
         ;
 
