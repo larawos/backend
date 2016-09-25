@@ -23,10 +23,12 @@ Route::group(['namespace' => 'Auth'], function() {
     Route::post('logout', 'LoginController@logout');
 });
 
+Route::group([], function() {
+    Route::resource('user', 'DashboardController');
+});
+
 Route::group(['middleware' => 'auth'], function() {
     Route::get('{group?}/{module?}/{frist?}/{second?}', 'DashboardController@index');
 });
 
-Route::group([], function() {
-    Route::resource('user', 'DashboardController');
-});
+
