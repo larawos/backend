@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import array_merge from 'locutus/php/array/array_merge'
 
 Vue.use(Vuex)
 
@@ -16,8 +15,8 @@ const mutations = {
     SET_AUTHOR (state, author) {
         state.author = author
     },
-    SET_FORM (state, data) {
-        state.form = array_merge(state.form, data)
+    SET_FORM (state, form) {
+        state.form = form
     },
     SET_CATEGORYS (state, categorys) {
         state.categorys = categorys

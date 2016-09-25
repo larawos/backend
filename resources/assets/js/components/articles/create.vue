@@ -32,7 +32,7 @@
                         <div class="row">
                             <div class="col-xs-12 col-sm-4 col-md-4 mar-btm">
                                 <div class="img-container mar-btm">
-                                    <img id="image" width="100%" :src="form.thumb">
+                                    <img id="image" :src="form.thumb">
                                 </div>
                                 <div class="btn-container">
                                     <div class="btn-group">
@@ -130,7 +130,8 @@
             $('#types').chosen({width:'100%'}).change(function(){
                 self.setForm({types: $(this).val()})
             });
-            $("#editor").summernote({height:300,callbacks: {onChange(contents) {
+            var summernote = $("#editor")
+            summernote.summernote({height:500,callbacks: {onChange(contents) {
                 self.setForm({content: contents})
             }}})
             var $image = $('#image'),

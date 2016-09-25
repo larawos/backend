@@ -1,4 +1,6 @@
 import Vue from 'vue'
+import array_merge from 'locutus/php/array/array_merge'
+import sha1_file from 'locutus/php/strings/sha1_file'
 
 export const setLists = ({ dispatch, state }, module) => {
 
@@ -47,9 +49,13 @@ export const editItem = ({ dispatch, state }, module, id, data) => {
 }
 
 export const setForm = ({ dispatch, state }, data) => {
-    dispatch('SET_FORM', data)
+    dispatch('SET_FORM', array_merge(state.form, data))
 }
 
 export const initForm = ({ dispatch, state }) => {
+    dispatch('INIT_FORM')
+}
+
+export const uploadFile = ({ dispatch, state }) => {
     dispatch('INIT_FORM')
 }

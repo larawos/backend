@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('before-styles-end')
-<link href="//fonts.lug.ustc.edu.cn/css?family=Open+Sans:300,400,600,700&subset=latin" rel="stylesheet">
+<!-- <link href="//fonts.lug.ustc.edu.cn/css?family=Open+Sans:300,400,600,700&subset=latin" rel="stylesheet"> -->
 <link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 @endsection
 

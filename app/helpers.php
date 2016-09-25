@@ -39,7 +39,7 @@ if (! function_exists('decode_file_token')) {
         $names = [];
         $domain = rtrim(config('filesystems.disks.qiniu.domains.custom'), '/');
 
-        $domain = false !== strpos($domain, 'http') ? substr($domain, strpos($domain, '//')) : '//' . $domain;
+        $domain = false !== strpos($domain, 'http://') ? $domain : 'http://' . $domain;
 
         if (!empty($matchs)) {
             foreach ($matchs[1] as $key => $match) {

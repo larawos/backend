@@ -35,7 +35,6 @@ class ArticleService
 
     public function create($input)
     {
-
         $file = parse_base64($input['thumb']);
 
         event(new UploadFile($file));
@@ -59,6 +58,33 @@ class ArticleService
         }
 
         return $this->articles->create($input);
+    }
+
+    public function update($id, $input)
+    {
+        $file = parse_base64($input['thumb']);
+
+        event(new UploadFile($file));
+        
+        $input['thumb'] = encode_file_token($file->get('name'));
+
+        preg_match_all('/"(data:[\w]+\/[\w\d_\-\.]+;base64,.*?)"/', $input['content'], $matchs);
+        $matchs = collect($matchs)->filter()->toArray();
+        $names = [];
+
+        if (!empty($matchs)) {
+            foreach ($matchs[1] as $key => $match) {
+                $file = parse_base64($match);
+
+                event(new UploadFile($file));
+
+                $names[$key] = encode_file_token($file->get('name'));
+            }
+
+            $input['content'] = str_replace($matchs[1], $names, $input['content']);
+        }
+        
+        $this->articles->update($id, $input);
     }
 
     public function getListWithAll()

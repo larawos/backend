@@ -40,3 +40,8 @@ Route::group(['middleware' => 'auth:api'], function() {
     });
     
 });
+
+
+Route::group(['namespace' => 'User'], function() {
+    Route::resource('user', 'DashboardController');
+});

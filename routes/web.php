@@ -12,6 +12,8 @@
 */
 
 Route::get('/', function () {
+    $token = Storage::uploadToken('0e9797dfd582ab05742628c70772860d.jpg');
+    dd($token);
     return view('welcome');
 });
 
