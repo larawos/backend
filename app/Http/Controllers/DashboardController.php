@@ -25,14 +25,4 @@ class DashboardController extends Controller
     {
         return view('dashboard');
     }
-
-    public function store()
-    {
-        return ['msg' => 'post success.'];
-    }
-
-    public function show($id)
-    {
-        return ['msg' => 'get success'];
-    }
 }

@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    $token = Storage::uploadToken('0e9797dfd582ab05742628c70772860d.jpg');
+    $token = Storage::uploadToken();
     dd($token);
     return view('welcome');
 });
@@ -23,12 +23,6 @@ Route::group(['namespace' => 'Auth'], function() {
     Route::post('logout', 'LoginController@logout');
 });
 
-Route::group([], function() {
-    Route::resource('user', 'DashboardController');
-});
-
 Route::group(['middleware' => 'auth'], function() {
     Route::get('{group?}/{module?}/{frist?}/{second?}', 'DashboardController@index');
 });
-
-

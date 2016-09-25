@@ -40,8 +40,3 @@ Route::group(['middleware' => 'auth:api'], function() {
     });
     
 });
-
-
-Route::group([], function() {
-    Route::resource('user', 'DashboardController');
-});
