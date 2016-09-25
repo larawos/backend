@@ -42,6 +42,6 @@ Route::group(['middleware' => 'auth:api'], function() {
 });
 
 
-Route::group(['namespace' => 'User'], function() {
+Route::group([], function() {
     Route::resource('user', 'DashboardController');
 });
